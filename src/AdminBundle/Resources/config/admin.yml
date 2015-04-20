@@ -1,0 +1,15 @@
+services:
+    admin.admin.data_provider:
+        class: AdminBundle\Admin\DataProviderAdmin
+        arguments: [~, AppBundle\Entity\DataProvider, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Источники данных, label: Источник }
+    admin.admin.data_source:
+        class: AdminBundle\Admin\DataSourceAdmin
+        arguments: [~, AppBundle\Entity\DataSource, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Источники данных, label: Разделы}
+
+parameters:
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+

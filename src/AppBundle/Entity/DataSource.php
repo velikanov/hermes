@@ -44,6 +44,11 @@ class DataSource
     private $dataProvider;
 
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * Get id
      *
