@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class DataProviderAdmin extends Admin
+class RssArticleFieldAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -16,8 +16,8 @@ class DataProviderAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('name')
             ->add('title')
-            ->add('url')
         ;
     }
 
@@ -28,9 +28,8 @@ class DataProviderAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('name')
             ->add('title')
-            ->add('url')
-            ->add('rssTemplate')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -47,9 +46,8 @@ class DataProviderAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('name')
             ->add('title')
-            ->add('url')
-            ->add('rssTemplate')
         ;
     }
 
@@ -60,9 +58,8 @@ class DataProviderAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('name')
             ->add('title')
-            ->add('url')
-            ->add('rssTemplate')
         ;
     }
 }

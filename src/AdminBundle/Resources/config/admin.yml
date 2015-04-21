@@ -3,13 +3,27 @@ services:
         class: AdminBundle\Admin\DataProviderAdmin
         arguments: [~, AppBundle\Entity\DataProvider, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Источники данных, label: Источник }
+            - { name: sonata.admin, manager_type: orm, group: Источники данных, label: Источники}
     admin.admin.data_source:
         class: AdminBundle\Admin\DataSourceAdmin
         arguments: [~, AppBundle\Entity\DataSource, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Источники данных, label: Разделы}
+    admin.admin.rss_template:
+        class: AdminBundle\Admin\RssTemplateAdmin
+        arguments: [~, AppBundle\Entity\RssTemplate, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RSS, label: Шаблоны RSS}
+    admin.admin.rss_article_field:
+        class: AdminBundle\Admin\RssArticleFieldAdmin
+        arguments: [~, AppBundle\Entity\RssArticleField, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RSS, label: Поля статей}
+    admin.admin.rss_template_field:
+        class: AdminBundle\Admin\RssTemplateFieldAdmin
+        arguments: [~, AppBundle\Entity\RssTemplateField, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RSS, label: Поля шаблонов}
 
 parameters:
     security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
-

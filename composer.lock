@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "20c86f70a13fb2dbf3d9f5f85de0dda9",
+    "hash": "d3caef2c4b7c96a7339f162a29d25eee",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -67,6 +67,51 @@
                 "slugify"
             ],
             "time": "2015-03-18 08:21:30"
+        },
+        {
+            "name": "debril/rss-atom-bundle",
+            "version": "dev-master",
+            "target-dir": "Debril/RssAtomBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexdebril/rss-atom-bundle.git",
+                "reference": "542ec7b0bbbaad25dcd3bab6a9514f22e0002f52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexdebril/rss-atom-bundle/zipball/542ec7b0bbbaad25dcd3bab6a9514f22e0002f52",
+                "reference": "542ec7b0bbbaad25dcd3bab6a9514f22e0002f52",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/config": "~2.6"
+            },
+            "require-dev": {
+                "doctrine/common": "~2.3",
+                "phpunit/phpunit": "~3.7",
+                "symfony/browser-kit": "~2.6",
+                "symfony/finder": "~2.6",
+                "symfony/form": "~2.6",
+                "symfony/framework-bundle": "~2.6",
+                "symfony/validator": "~2.6"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Debril\\RssAtomBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "description": "RSS and Atom support for Symfony 2",
+            "keywords": [
+                "atom",
+                "rss"
+            ],
+            "time": "2015-03-09 23:02:50"
         },
         {
             "name": "doctrine/annotations",
@@ -2433,7 +2478,8 @@
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "debril/rss-atom-bundle": 20
     },
     "prefer-stable": false,
     "platform": {

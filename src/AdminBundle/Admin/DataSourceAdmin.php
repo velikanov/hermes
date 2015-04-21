@@ -16,7 +16,6 @@ class DataSourceAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
             ->add('title')
             ->add('url')
             ->add('dataProvider')
@@ -33,6 +32,7 @@ class DataSourceAdmin extends Admin
             ->add('title')
             ->add('url')
             ->add('dataProvider')
+            ->add('rssTemplate')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -52,6 +52,7 @@ class DataSourceAdmin extends Admin
             ->add('title')
             ->add('url')
             ->add('dataProvider')
+            ->add('rssTemplate')
         ;
     }
 
@@ -65,6 +66,7 @@ class DataSourceAdmin extends Admin
             ->add('title')
             ->add('url')
             ->add('dataProvider')
+            ->add('rssTemplate')
         ;
     }
 }

@@ -43,6 +43,12 @@ class DataProvider
      */
     private $dataSources;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RssTemplate")
+     * @ORM\JoinColumn(name="rss_template_id", referencedColumnName="id", nullable=false)
+     */
+    private $rssTemplate;
+
 
     public function __construct()
     {
@@ -141,5 +147,28 @@ class DataProvider
     public function getDataSources()
     {
         return $this->dataSources;
+    }
+
+    /**
+     * Set rssTemplate
+     *
+     * @param \AppBundle\Entity\RssTemplate $rssTemplate
+     * @return DataProvider
+     */
+    public function setRssTemplate(\AppBundle\Entity\RssTemplate $rssTemplate = null)
+    {
+        $this->rssTemplate = $rssTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get rssTemplate
+     *
+     * @return \AppBundle\Entity\RssTemplate 
+     */
+    public function getRssTemplate()
+    {
+        return $this->rssTemplate;
     }
 }

@@ -24,10 +24,12 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Debril\RssAtomBundle\DebrilRssAtomBundle(),
 
             new AppBundle\AppBundle(),
             new UserBundle\UserBundle(),
             new AdminBundle\AdminBundle(),
+            new FetcherBundle\FetcherBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
