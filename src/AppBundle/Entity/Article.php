@@ -65,6 +65,11 @@ class Article
      */
     private $dateTime;
 
+    /**
+     * @ORM\Column(name="content", type="text", nullable=true)
+     */
+    private $content;
+
 
     /**
      * @ORM\PrePersist()
@@ -221,5 +226,28 @@ class Article
     public function getUrlHash()
     {
         return $this->urlHash;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Article
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }

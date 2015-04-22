@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class FetchArticleCommand extends ContainerAwareCommand {
     protected function configure()
     {
-        $this->setName('fetcher:fetch');
+        $this->setName('fetcher:fetch:articles');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

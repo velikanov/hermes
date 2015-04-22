@@ -39,6 +39,9 @@ class ArticleAdmin extends Admin
                     'template' => 'AdminBundle:Article:field/title.html.twig',
                 ])
             ->add('dateTime')
+            ->add('isContentLoaded', 'boolean', [
+                    'template' => 'AdminBundle:Article:field/isContentLoaded.html.twig',
+                ])
             ->add('description')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -48,6 +51,11 @@ class ArticleAdmin extends Admin
                 )
             ))
         ;
+    }
+
+    private function hello()
+    {
+        return true;
     }
 
     /**

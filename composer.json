@@ -26,7 +26,8 @@
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
-        "debril/rss-atom-bundle": "dev-master"
+        "debril/rss-atom-bundle": "dev-master",
+        "sensio/buzz-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
