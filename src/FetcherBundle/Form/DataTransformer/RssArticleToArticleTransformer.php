@@ -43,7 +43,14 @@ class RssArticleToArticleTransformer implements DataTransformerInterface {
         foreach ($this->rssTemplateFields as $rssTemplateField) {
             $setter = 'set'.ucfirst($rssTemplateField->getRssArticleField());
             $getter = 'get'.ucfirst($rssTemplateField->getValue());
-            $article->$setter($rssArticle->$getter());
+
+            $fieldValue = $rssArticle->$getter();
+
+            if (is_string($fieldValue)) {
+                $fieldValue = strip_tags($fieldValue);
+            }
+
+            $article->$setter($fieldValue);
         }
 
         return $article;

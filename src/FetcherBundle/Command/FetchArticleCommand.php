@@ -27,6 +27,11 @@ class FetchArticleCommand extends ContainerAwareCommand {
 
         $dataSources = $entityManager->getRepository('AppBundle:DataSource')->findAll();
 
+        $counters = [
+            'added' => 0,
+            'skipped' => 0,
+        ];
+
         foreach ($dataSources as $dataSource) {
             $dataTransformer = new RssArticleToArticleTransformer($rssTemplateFieldRepository, $dataSource);
 
@@ -41,8 +46,15 @@ class FetchArticleCommand extends ContainerAwareCommand {
                     ])) {
                     $entityManager->persist($article);
                     $entityManager->flush();
+
+                    $counters['added']++;
+                } else {
+                    $counters['skipped']++;
                 }
             }
         }
+
+        $output->writeln(sprintf('Added <info>%d</info> articles', $counters['added']));
+        $output->writeln(sprintf('Skipped <info>%d</info> articles', $counters['skipped']));
     }
 } 

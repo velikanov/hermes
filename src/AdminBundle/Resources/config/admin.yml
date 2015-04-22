@@ -24,6 +24,11 @@ services:
         arguments: [~, AppBundle\Entity\RssTemplateField, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RSS, label: Поля шаблонов}
+    admin.admin.article:
+        class: AdminBundle\Admin\ArticleAdmin
+        arguments: [~, AppBundle\Entity\Article, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Статьи, label: Статьи}
 
 parameters:
     security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
