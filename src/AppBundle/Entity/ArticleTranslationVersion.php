@@ -24,7 +24,7 @@ class ArticleTranslationVersion
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Article\Article", inversedBy="translations")
      * @ORM\JoinColumn(name="article_id", referencedColumnName="id", nullable=false)
      */
     private $article;

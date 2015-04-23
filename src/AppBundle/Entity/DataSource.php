@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\DataProvider\DataProvider;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,7 +39,7 @@ class DataSource
     /**
      * @var DataProvider
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\DataProvider", inversedBy="dataSources")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\DataProvider\DataProvider", inversedBy="dataSources")
      * @ORM\JoinColumn(name="data_provider_id", referencedColumnName="id")
      */
     private $dataProvider;
@@ -114,10 +115,10 @@ class DataSource
     /**
      * Set dataProvider
      *
-     * @param \AppBundle\Entity\DataProvider $dataProvider
+     * @param DataProvider $dataProvider
      * @return DataSource
      */
-    public function setDataProvider(\AppBundle\Entity\DataProvider $dataProvider = null)
+    public function setDataProvider(DataProvider $dataProvider = null)
     {
         $this->dataProvider = $dataProvider;
 
@@ -127,7 +128,7 @@ class DataSource
     /**
      * Get dataProvider
      *
-     * @return \AppBundle\Entity\DataProvider 
+     * @return DataProvider
      */
     public function getDataProvider()
     {
@@ -137,10 +138,10 @@ class DataSource
     /**
      * Set rssTemplate
      *
-     * @param \AppBundle\Entity\RssTemplate $rssTemplate
+     * @param RssTemplate $rssTemplate
      * @return DataSource
      */
-    public function setRssTemplate(\AppBundle\Entity\RssTemplate $rssTemplate = null)
+    public function setRssTemplate(RssTemplate $rssTemplate = null)
     {
         $this->rssTemplate = $rssTemplate;
 
@@ -150,7 +151,7 @@ class DataSource
     /**
      * Get rssTemplate
      *
-     * @return \AppBundle\Entity\RssTemplate 
+     * @return RssTemplate
      */
     public function getRssTemplate()
     {

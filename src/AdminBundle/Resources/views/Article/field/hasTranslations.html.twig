@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:list_boolean.html.twig' %}
+
+{% if 0 < object.translations|length %}
+    {% set value = true %}
+{% else %}
+    {% set value = false %}
+{% endif %}

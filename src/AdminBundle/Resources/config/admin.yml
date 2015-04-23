@@ -1,14 +1,19 @@
 services:
     admin.admin.data_provider:
         class: AdminBundle\Admin\DataProviderAdmin
-        arguments: [~, AppBundle\Entity\DataProvider, SonataAdminBundle:CRUD]
+        arguments: [~, AppBundle\Entity\DataProvider\DataProvider, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Источники данных, label: Источники}
     admin.admin.data_source:
         class: AdminBundle\Admin\DataSourceAdmin
         arguments: [~, AppBundle\Entity\DataSource, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Источники данных, label: Разделы}
+            - {name: sonata.admin, manager_type: orm, group: Источники данных, label: Фиды}
+    admin.admin.rule:
+        class: AdminBundle\Admin\RuleAdmin
+        arguments: [~, AppBundle\Entity\DataProvider\Rule, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Источники данных, label: Правила}
     admin.admin.rss_template:
         class: AdminBundle\Admin\RssTemplateAdmin
         arguments: [~, AppBundle\Entity\RssTemplate, SonataAdminBundle:CRUD]
@@ -26,7 +31,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: RSS, label: Поля шаблонов}
     admin.admin.article:
         class: AdminBundle\Admin\ArticleAdmin
-        arguments: [~, AppBundle\Entity\Article, SonataAdminBundle:CRUD]
+        arguments: [~, AppBundle\Entity\Article\Article, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Статьи, label: Статьи}
 

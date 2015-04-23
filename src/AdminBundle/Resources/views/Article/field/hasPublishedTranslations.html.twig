@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:list_boolean.html.twig' %}
+
+{% set value = false %}
+
+{% if 0 < object.translations|length %}
+    {% for translation in object.translations if translation.isPublished %}
+        {% set value = true %}
+    {% endfor %}
+{% endif %}

@@ -22,7 +22,6 @@ class ArticleAdmin extends Admin
     {
         $datagridMapper
             ->add('title')
-            ->add('description')
             ->add('url')
             ->add('dateTime')
         ;
@@ -39,10 +38,18 @@ class ArticleAdmin extends Admin
                     'template' => 'AdminBundle:Article:field/title.html.twig',
                 ])
             ->add('dateTime')
-            ->add('isContentLoaded', 'boolean', [
-                    'template' => 'AdminBundle:Article:field/isContentLoaded.html.twig',
+            ->add('isRawContentLoaded', 'boolean', [
+                    'template' => 'AdminBundle:Article:field/isRawContentLoaded.html.twig',
                 ])
-            ->add('description')
+            ->add('isContentNormalized', 'boolean', [
+                    'template' => 'AdminBundle:Article:field/isContentNormalized.html.twig',
+                ])
+            ->add('hasTranslations', 'boolean', [
+                    'template' => 'AdminBundle:Article:field/hasTranslations.html.twig',
+                ])
+            ->add('hasPublishedTranslations', 'boolean', [
+                    'template' => 'AdminBundle:Article:field/hasPublishedTranslations.html.twig',
+                ])
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -51,11 +58,6 @@ class ArticleAdmin extends Admin
                 )
             ))
         ;
-    }
-
-    private function hello()
-    {
-        return true;
     }
 
     /**
@@ -84,6 +86,8 @@ class ArticleAdmin extends Admin
             ->add('url')
             ->add('urlHash')
             ->add('dateTime')
+            ->add('rawContent')
+            ->add('content')
         ;
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\DataProvider;
 
+use AppBundle\Entity\DataSource;
+use AppBundle\Entity\RssTemplate;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -119,10 +121,10 @@ class DataProvider
     /**
      * Add dataSources
      *
-     * @param \AppBundle\Entity\DataSource $dataSources
+     * @param DataSource $dataSources
      * @return DataProvider
      */
-    public function addDataSource(\AppBundle\Entity\DataSource $dataSources)
+    public function addDataSource(DataSource $dataSources)
     {
         $this->dataSources[] = $dataSources;
 
@@ -132,9 +134,9 @@ class DataProvider
     /**
      * Remove dataSources
      *
-     * @param \AppBundle\Entity\DataSource $dataSources
+     * @param DataSource $dataSources
      */
-    public function removeDataSource(\AppBundle\Entity\DataSource $dataSources)
+    public function removeDataSource(DataSource $dataSources)
     {
         $this->dataSources->removeElement($dataSources);
     }
@@ -152,10 +154,10 @@ class DataProvider
     /**
      * Set rssTemplate
      *
-     * @param \AppBundle\Entity\RssTemplate $rssTemplate
+     * @param RssTemplate $rssTemplate
      * @return DataProvider
      */
-    public function setRssTemplate(\AppBundle\Entity\RssTemplate $rssTemplate = null)
+    public function setRssTemplate(RssTemplate $rssTemplate = null)
     {
         $this->rssTemplate = $rssTemplate;
 
@@ -165,7 +167,7 @@ class DataProvider
     /**
      * Get rssTemplate
      *
-     * @return \AppBundle\Entity\RssTemplate 
+     * @return RssTemplate
      */
     public function getRssTemplate()
     {

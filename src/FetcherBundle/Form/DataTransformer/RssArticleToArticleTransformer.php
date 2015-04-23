@@ -2,7 +2,7 @@
 
 namespace FetcherBundle\Form\DataTransformer;
 
-use AppBundle\Entity\Article;
+use AppBundle\Entity\Article\Article;
 use AppBundle\Entity\DataSource;
 use AppBundle\Entity\RssTemplateField;
 use Doctrine\ORM\EntityRepository;

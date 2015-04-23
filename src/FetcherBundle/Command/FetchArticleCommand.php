@@ -10,19 +10,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 class FetchArticleCommand extends ContainerAwareCommand {
     protected function configure()
     {
-        $this->setName('fetcher:fetch:articles');
+        $this->setName('fetch:article');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $container = $this->getContainer();
 
-        $doctrine = $container->get('doctrine');
         $feedReader = $container->get('debril.reader');
 
-        $entityManager = $doctrine->getManager();
+        $entityManager = $container->get('doctrine')->getManager();
 
-        $articleRepository = $entityManager->getRepository('AppBundle:Article');
+        $articleRepository = $entityManager->getRepository('AppBundle:Article\Article');
         $rssTemplateFieldRepository = $entityManager->getRepository('AppBundle:RssTemplateField');
 
         $dataSources = $entityManager->getRepository('AppBundle:DataSource')->findAll();

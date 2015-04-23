@@ -1,7 +1,9 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\Article;
 
+use AppBundle\Entity\DataSource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,7 +22,7 @@ use Doctrine\ORM\Mapping as ORM;
  *          }
  *      )
  * })
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Article\ArticleRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Article
@@ -66,9 +68,25 @@ class Article
     private $dateTime;
 
     /**
+     * @ORM\Column(name="raw_content", type="text", nullable=true)
+     */
+    private $rawContent;
+
+    /**
      * @ORM\Column(name="content", type="text", nullable=true)
      */
     private $content;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ArticleTranslationVersion", mappedBy="article")
+     */
+    private $translations;
+
+
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
 
 
     /**
@@ -226,6 +244,62 @@ class Article
     public function getUrlHash()
     {
         return $this->urlHash;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Article
+     */
+    public function setRawContent($content)
+    {
+        $this->rawContent = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getRawContent()
+    {
+        return $this->rawContent;
+    }
+
+    /**
+     * Add translations
+     *
+     * @param ArticleTranslationVersion $translations
+     * @return Article
+     */
+    public function addTranslation(ArticleTranslationVersion $translations)
+    {
+        $this->translations[] = $translations;
+
+        return $this;
+    }
+
+    /**
+     * Remove translations
+     *
+     * @param ArticleTranslationVersion $translations
+     */
+    public function removeTranslation(ArticleTranslationVersion $translations)
+    {
+        $this->translations->removeElement($translations);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 
     /**

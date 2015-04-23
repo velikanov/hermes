@@ -2,7 +2,7 @@
 
 namespace FetcherBundle\Command;
 
-use AppBundle\Entity\Article\Article;
+use AppBundle\Entity\Article;
 use Buzz\Message\Request;
 use Buzz\Message\Response;
 use Doctrine\ORM\EntityManager;
@@ -10,10 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class FetchArticleContentCommand extends ContainerAwareCommand {
+class FetchArticleTranslationCommand extends ContainerAwareCommand {
     protected function configure()
     {
-        $this->setName('fetch:article:content');
+        $this->setName('fetch:article:translation');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -25,11 +25,11 @@ class FetchArticleContentCommand extends ContainerAwareCommand {
 
         $articleRepository = $entityManager->getRepository('AppBundle:Article\Article');
 
-        $articles = $articleRepository->findBy([
-                'rawContent' => null,
-            ], [
-                'dateTime' => 'DESC',
-            ], 100);
+        $articles = $articleRepository->findUntranslated(100);
+
+        $output->writeln(count($articles));
+
+        return;
 
         $buzzMulti = $container->get('buzz.multi');
 
@@ -52,7 +52,7 @@ class FetchArticleContentCommand extends ContainerAwareCommand {
                         /** @var Response $response */
 
                         if (!$error) {
-                            $article->setRawContent($response->getContent());
+                            $article->setContent($response->getContent());
 
                             $entityManager->persist($article);
                             $entityManager->flush();

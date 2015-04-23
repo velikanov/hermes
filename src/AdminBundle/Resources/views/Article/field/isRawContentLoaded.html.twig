@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:list_boolean.html.twig' %}
+
+{% if object.rawContent is null %}
+    {% set value = false %}
+{% else %}
+    {% set value = true %}
+{% endif %}
