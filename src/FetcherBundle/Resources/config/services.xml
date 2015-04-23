@@ -10,6 +10,10 @@
 
     <services>
         <service id="buzz.multi" class="%buzz.client.multi.class%" />
+        <service
+                id="fetcher.article_content_normalizer"
+                class="FetcherBundle\Service\ArticleContentNormalizer"
+                />
     </services>
 
 </container>

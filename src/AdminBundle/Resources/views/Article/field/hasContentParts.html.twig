@@ -1,7 +1,7 @@
 {% extends 'SonataAdminBundle:CRUD:list_boolean.html.twig' %}
 
-{% if object.content is null %}
-    {% set value = false %}
-{% else %}
+{% if 0 < object.contentParts|length %}
     {% set value = true %}
+{% else %}
+    {% set value = false %}
 {% endif %}

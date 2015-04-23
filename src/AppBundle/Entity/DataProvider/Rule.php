@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\DataProvider;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Rule
@@ -22,7 +23,7 @@ class Rule
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\DataProvider\DataProvider")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\DataProvider\DataProvider", inversedBy="rules")
      * @ORM\JoinColumn(name="data_provider_id", referencedColumnName="id", nullable=false)
      */
     private $dataProvider;
@@ -36,6 +37,12 @@ class Rule
      * @ORM\Column(name="title", type="string", length=100)
      */
     private $title;
+
+    /**
+     * @Gedmo\SortablePosition()
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
 
 
     /**
@@ -115,5 +122,28 @@ class Rule
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Rule
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

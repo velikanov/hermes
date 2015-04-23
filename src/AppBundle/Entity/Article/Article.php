@@ -73,9 +73,9 @@ class Article
     private $rawContent;
 
     /**
-     * @ORM\Column(name="content", type="text", nullable=true)
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article\ContentPart", mappedBy="article", cascade={"all"})
      */
-    private $content;
+    private $contentParts;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\ArticleTranslationVersion", mappedBy="article")
@@ -86,6 +86,7 @@ class Article
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->contentParts = new ArrayCollection();
     }
 
 
@@ -323,5 +324,38 @@ class Article
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Add contentParts
+     *
+     * @param ContentPart $contentParts
+     * @return Article
+     */
+    public function addContentPart(ContentPart $contentParts)
+    {
+        $this->contentParts[] = $contentParts;
+
+        return $this;
+    }
+
+    /**
+     * Remove contentParts
+     *
+     * @param ContentPart $contentParts
+     */
+    public function removeContentPart(ContentPart $contentParts)
+    {
+        $this->contentParts->removeElement($contentParts);
+    }
+
+    /**
+     * Get contentParts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContentParts()
+    {
+        return $this->contentParts;
     }
 }

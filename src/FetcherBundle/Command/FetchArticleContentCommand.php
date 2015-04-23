@@ -29,9 +29,10 @@ class FetchArticleContentCommand extends ContainerAwareCommand {
                 'rawContent' => null,
             ], [
                 'dateTime' => 'DESC',
-            ], 100);
+            ], 1);
 
         $buzzMulti = $container->get('buzz.multi');
+        $articleContentNormalizer = $container->get('fetcher.article_content_normalizer');
 
         $counters = [
             'fetched' => 0,
@@ -47,12 +48,14 @@ class FetchArticleContentCommand extends ContainerAwareCommand {
             $request = new Request(Request::METHOD_GET, $urlFullPath, $url['host']);
             $response = new Response();
             $buzzMulti->send($request, $response, [
-                    'callback' => function($client, $request, $response, $options, $error) use ($article, $entityManager, $output, $counters)
+                    'callback' => function($client, $request, $response, $options, $error) use ($article, $entityManager, $output, $counters, $articleContentNormalizer)
                     {
                         /** @var Response $response */
 
                         if (!$error) {
                             $article->setRawContent($response->getContent());
+
+                            $articleContentNormalizer->normalize($article);
 
                             $entityManager->persist($article);
                             $entityManager->flush();

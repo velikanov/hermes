@@ -42,7 +42,7 @@ class ArticleAdmin extends Admin
                     'template' => 'AdminBundle:Article:field/isRawContentLoaded.html.twig',
                 ])
             ->add('isContentNormalized', 'boolean', [
-                    'template' => 'AdminBundle:Article:field/isContentNormalized.html.twig',
+                    'template' => 'AdminBundle:Article:field/hasContentParts.html.twig',
                 ])
             ->add('hasTranslations', 'boolean', [
                     'template' => 'AdminBundle:Article:field/hasTranslations.html.twig',

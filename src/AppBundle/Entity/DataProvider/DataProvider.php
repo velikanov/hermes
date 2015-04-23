@@ -51,10 +51,17 @@ class DataProvider
      */
     private $rssTemplate;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DataProvider\Rule", mappedBy="dataProvider")
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $rules;
+
 
     public function __construct()
     {
         $this->dataSources = new ArrayCollection();
+        $this->rules = new ArrayCollection();
     }
 
     public function __toString()
@@ -172,5 +179,38 @@ class DataProvider
     public function getRssTemplate()
     {
         return $this->rssTemplate;
+    }
+
+    /**
+     * Add rules
+     *
+     * @param Rule $rules
+     * @return DataProvider
+     */
+    public function addRule(Rule $rules)
+    {
+        $this->rules[] = $rules;
+
+        return $this;
+    }
+
+    /**
+     * Remove rules
+     *
+     * @param Rule $rules
+     */
+    public function removeRule(Rule $rules)
+    {
+        $this->rules->removeElement($rules);
+    }
+
+    /**
+     * Get rules
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRules()
+    {
+        return $this->rules;
     }
 }

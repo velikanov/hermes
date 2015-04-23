@@ -10,8 +10,10 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: Источники данных, label: Фиды}
     admin.admin.rule:
-        class: AdminBundle\Admin\RuleAdmin
-        arguments: [~, AppBundle\Entity\DataProvider\Rule, SonataAdminBundle:CRUD]
+        class: AdminBundle\Admin\DataProviderRuleAdmin
+        arguments: [~, AppBundle\Entity\DataProvider\Rule, PixSortableBehaviorBundle:SortableAdmin]
+        calls:
+            - [ setPositionService, [@pix_sortable_behavior.position]]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Источники данных, label: Правила}
     admin.admin.rss_template:
